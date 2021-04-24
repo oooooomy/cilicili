@@ -7,7 +7,7 @@
     "pages/release/release",
     "pages/live/live",
     "pages/user/user",
-    "pages/follow/follow"
+    "pages/videos/videos"
   ],
   "window": {
     "onReachBottomDistance": 0,

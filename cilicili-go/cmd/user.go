@@ -4,7 +4,6 @@ import (
 	"cilicili-go/api/video"
 	"cilicili-go/conf"
 	_ "cilicili-go/conf"
-	_ "cilicili-go/handler/video"
 	"github.com/kataras/iris/v12"
 	eureka "github.com/xuanbo/eureka-client"
 	"os"

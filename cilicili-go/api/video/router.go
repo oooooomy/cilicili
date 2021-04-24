@@ -21,8 +21,4 @@ func RegisterAllRouter(app *iris.Application) {
 
 	app.Delete("/{id}", deleteVideo)
 
-	app.Post("/upload/mp4", uploadMp4)
-
-	app.Post("/upload/mp3", uploadMp3)
-
 }

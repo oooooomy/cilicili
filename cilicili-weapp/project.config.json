@@ -42,7 +42,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.16.1",
   "appid": "wx18783a513dd8b26f",
-  "projectname": "cilicili",
+  "projectname": "cilicili-weapp",
   "debugOptions": {
     "hidedInDevtools": []
   },

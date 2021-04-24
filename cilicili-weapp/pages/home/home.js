@@ -28,7 +28,7 @@ Page({
 
     onClickLeft() {
         wx.navigateTo({
-            url: '/pages/follow/follow'
+            url: '/pages/videos/videos'
         })
     },
 

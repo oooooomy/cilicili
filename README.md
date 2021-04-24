@@ -6,6 +6,4 @@
 
 ### cilicili-go （后端服务go）
 
-### cilicili-weapp （微信小程序app）
-
-### cilicili-admin （后台管理vue）
+### cilicili-weapp （微信小程序app

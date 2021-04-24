@@ -14,7 +14,7 @@
                value="{{barrageInputValue}}"
                bind:input="barrageInput"
                maxlength="500"
-               placeholder="What do you want to say ?"/>
+               placeholder="快来发一条评论吧！"/>
     </view>
     <van-button class="send-btn"
                 color="linear-gradient(to right, #4bb0ff, #6149f6)"

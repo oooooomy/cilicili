@@ -3,10 +3,11 @@ package video
 import (
 	"cilicili-go/model/entity"
 	"cilicili-go/model/support"
-	videoService "cilicili-go/service/video"
+	"cilicili-go/service"
 	"github.com/kataras/iris/v12"
-	"strings"
 )
+
+var videoService = new(service.VideoServiceImpl)
 
 func findAllVideo(c iris.Context) {
 	videos := videoService.FindAllVideo()
@@ -50,44 +51,4 @@ func updateVideo(c iris.Context) {
 		return
 	}
 	_, _ = c.JSON(support.SuccessWithData(videoService.UpdateVideo(video)))
-}
-
-func uploadMp4(c iris.Context) {
-	file, header, err := c.FormFile("file")
-	if err != nil {
-		panic(err)
-	}
-	filename := header.Filename
-	//分割字符
-	split := strings.Split(filename, ".")
-	//防止文件名包含 "."
-	if split[len(split)-1] != "mp4" {
-		_, _ = c.JSON(support.Error(400, "Disallowed file type"))
-		return
-	}
-	name, err := videoService.PutMp4(file)
-	if err != nil {
-		panic(err)
-	}
-	_, _ = c.JSON(support.SuccessWithData(name))
-}
-
-func uploadMp3(c iris.Context) {
-	file, header, err := c.FormFile("file")
-	if err != nil {
-		panic(err)
-	}
-	filename := header.Filename
-	//分割字符
-	split := strings.Split(filename, ".")
-	//防止文件名包含 "."
-	if split[len(split)-1] != "mp3" {
-		_, _ = c.JSON(support.Error(400, "Disallowed file type"))
-		return
-	}
-	name, err := videoService.PutMp3(file)
-	if err != nil {
-		panic(err)
-	}
-	_, _ = c.JSON(support.SuccessWithData(name))
 }
