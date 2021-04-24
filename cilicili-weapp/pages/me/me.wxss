@@ -1,8 +1,3 @@
-page {
-    background: #1b2021;
-    letter-spacing: 1px;
-}
-
 .live-header {
     transform: translateY(-10rpx);
     font-size: 30rpx;

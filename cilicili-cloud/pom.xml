@@ -7,6 +7,7 @@
     <modules>
         <module>cilicili-eureka</module>
         <module>cilicili-gateway</module>
+        <module>cilicili-account</module>
     </modules>
 
     <parent>

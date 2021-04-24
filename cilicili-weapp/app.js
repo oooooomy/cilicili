@@ -10,6 +10,16 @@ App({
 
     onLaunch() {
 
+        wx.login({
+            success: (res) => {
+                console.log(res)
+                wx.request({
+                    url: 'http://localhost:8080/login?code=' + res.code,
+                    method: "POST"
+                })
+            }
+        })
+
         //获取手机信息
         wx.getSystemInfo({
             success: (res) => {
