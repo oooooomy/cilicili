@@ -1,0 +1,15 @@
+#阿里云OSS对象存储
+oss:
+  endpoint: oss-cn-zhangjiakou.aliyuncs.com
+  accessKeyId: LTAIy26RIiRm2X3N
+  accessKeySecret: WGP92A89rj6ToRihDUxb6SVJi9lmVc
+  bucketName: cilicili-video
+
+#数据库
+db:
+  type: mysql
+  url: root:abc521521521@(localhost:3306)/cilicili?charset=utf8mb4&parseTime=True&loc=Local
+
+#SpringCloud注册中心的地址
+eureka:
+  address: http://localhost:8761/eureka/

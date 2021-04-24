@@ -1,0 +1,90 @@
+page {
+    background: #1b2021;
+    letter-spacing: 1px;
+}
+
+.van-row {
+    max-width: 100vw;
+}
+
+.van-tabs__scroll {
+    background: transparent !important;
+    letter-spacing: 2px !important;
+}
+
+.user-avatar {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    margin-left: 50vw;
+    margin-top: 30rpx;
+    transform: translateX(-100rpx);
+}
+
+.user-username {
+    text-align: center;
+    font-weight: 500;
+    font-size: 30rpx;
+    margin: 20rpx 0;
+    letter-spacing: 1px;
+}
+
+.user-des {
+    width: 70vw;
+    margin: auto;
+}
+
+.user-des-item {
+    width: 33%;
+    text-align: center;
+}
+
+.user-des-item-d1 {
+    padding-top: 10rpx;
+    font-size: 35rpx;
+    font-weight: bolder;
+    color: #ffffff;
+}
+
+.user-des-item-d2 {
+    font-size: 23rpx;
+    padding-top: 10rpx;
+    color: rgba(256, 256, 256, .6);
+}
+
+.user-des-follow {
+    margin-top: 20rpx;
+}
+
+.user-des-follow-btn {
+    width: 100%;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 44px;
+    text-align: center;
+    height: 44px;
+    border-radius: 5rpx;
+    background: #fb3640;
+}
+
+.user-des-text {
+    text-align: center;
+    padding: 50rpx 0 10rpx 0;
+    line-height: 46rpx;
+    font-weight: 400;
+    font-size: 28rpx;
+}
+
+.user-like-item {
+    margin-top: 1px;
+    width: 100%;
+    height: 300rpx;
+    background: #ffffff;
+}
+
+.user-not-more {
+    line-height: 150rpx;
+    font-size: 25rpx;
+    letter-spacing: 2px;
+    text-align: center;
+}

@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/me/me",
+    "pages/home/home",
+    "pages/room/room",
+    "pages/release/release",
+    "pages/live/live",
+    "pages/user/user",
+    "pages/follow/follow"
+  ],
+  "window": {
+    "onReachBottomDistance": 0,
+    "backgroundColor": "#1b2021",
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

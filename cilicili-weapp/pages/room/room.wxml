@@ -1,0 +1,36 @@
+<van-nav-bar border="{{false}}"
+             custom-style="background: #1b2021;"
+             fixed="{{true}}"
+             placeholder="{{true}}"
+             bind:click-left="onClickLeft">
+    <view slot="left">
+        <van-icon name="arrow-left"/>
+    </view>
+    <view slot="title" class="room-header">white 卢本伟</view>
+</van-nav-bar>
+
+<video autoplay="{{true}}"
+       style="height: {{videoHeight}}px;"
+       show-center-play-btn="{{false}}"
+       enable-progress-gesture="{{false}}"
+       loop="{{true}}"
+       controls="{{true}}"
+       object-fit="contain"
+       src="{{room.url}}"/>
+
+<van-tabbar border="{{false}}" id="bottom-bar">
+    <view class="barrage-input">
+        <image class="send-image" src="../../assets/send.svg"/>
+        <input adjust-position="{{false}}"
+               value="{{barrageInputValue}}"
+               bind:input="barrageInput"
+               maxlength="500"
+               placeholder="What do you want to say ?"/>
+    </view>
+    <van-button class="send-btn"
+                color="linear-gradient(to right, #4bb0ff, #6149f6)"
+                bind:click="clickSubmit"
+                round>
+        Submit
+    </van-button>
+</van-tabbar>

@@ -1,0 +1,111 @@
+<van-nav-bar border="{{false}}"
+             bind:click-left="onClickLeft"
+             custom-style="background: transparent;">
+    <view slot="title" class="release-music" bindtap="onClickSelectMusic">
+        <van-icon name="music"/>
+        <text class="release-music-t">选择音乐</text>
+    </view>
+    <van-icon slot="left" size="45rpx" name="cross"/>
+</van-nav-bar>
+
+
+<view class="release-right-bar">
+    <view class="release-right-bar-item" bind:tap="onClickReversal">
+        <van-icon name="replay" size="50rpx"/>
+        <view class="release-right-bar-t">翻转</view>
+    </view>
+    <view class="release-right-bar-item">
+        <van-icon name="volume-o" size="50rpx"/>
+        <view class="release-right-bar-t">声音</view>
+    </view>
+    <view class="release-right-bar-item">
+        <van-icon name="underway-o" size="50rpx"/>
+        <view class="release-right-bar-t">延时</view>
+    </view>
+    <view class="release-right-bar-item">
+        <van-icon name="bulb-o" size="50rpx"/>
+        <view class="release-right-bar-t">闪光灯</view>
+    </view>
+</view>
+
+        <!--摄像组件-->
+<camera device-position="{{cameraData.devicePosition ? 'back' : 'front'}}"
+        wx:if="{{!over}}"
+        resolution="high"
+        frame-size="large"
+        flash="off"
+        binderror="openCameraError"
+        class="release-camera"/>
+
+        <!--拍照按钮-->
+<view class="release-btn" wx:if="{{!over}}">
+    <view wx:if="{{!start}}" class="release-btn-start" bind:tap="onClickStart"></view>
+    <view wx:if="{{start}}" class="release-btn-stop" bind:tap="stopRecord">
+        <van-count-down use-slot time="{{ time }}" millisecond bind:change="onChange">
+            <text class="time">{{ timeData.seconds }}</text>
+        </van-count-down>
+    </view>
+</view>
+
+<view wx:if="{{over}}">
+    <video src="{{videoSrc}}"
+           class="over-video"
+           controls="{{false}}"
+           loop="{{true}}"
+           object-fit="cover"
+           show-center-play-btn="{{false}}"
+           enable-progress-gesture="{{false}}"
+           autoplay="{{true}}"/>
+</view>
+
+<view class="my-popup" wx:if="{{over}}">
+    <view class="my-popup-v1">点击即可发布作品</view>
+    <view class="my-popup-v2">点击重新拍摄将不会保存你的作品</view>
+    <van-icon style="padding-left: 100rpx" name="arrow-down"/>
+</view>
+
+<van-popup
+        id="van-popup"
+        show="{{ over }}"
+        position="bottom"
+        custom-style="height: 10%;background: #000000;"
+>
+    <van-button type="default"
+                bind:click="onClickSubmitVidoe"
+                custom-style="width:48vw;margin-top: 15rpx;margin-left: 1vw;letter-spacing: 1px;font-weight: 500;">
+        发布视频
+    </van-button>
+    <van-button type="danger"
+                bind:click="reShoot"
+                custom-style="width:48vw;margin-top: 15rpx;margin-left: 2vw;letter-spacing: 1px;font-weight: 500;">
+        重新拍摄
+    </van-button>
+</van-popup>
+
+<van-popup
+  show="{{ showMusic }}"
+  position="bottom"
+  closeable
+  custom-style="height: 85%;"
+  bind:close="onCloseMusic"
+>
+    <view class="video-popup-title">选择音乐</view>
+    <view class="video-popup-list">
+        <view class="video-popup-item">
+            <image class="video-popup-item-img" src="../../assets/aa.jpg"/>
+            <view class="video-popup-item-des">
+                <view class="video-popup-item-des1">Buling Buling</view>
+                <view class="video-popup-item-des2">iu</view>
+            </view>
+            <view class="video-popup-item-btn">使用</view>
+        </view>
+        <view class="video-popup-item">
+            <image class="video-popup-item-img" src="../../assets/aa.jpg"/>
+            <view class="video-popup-item-des">
+                <view class="video-popup-item-des1">Buling Buling</view>
+                <view class="video-popup-item-des2">iu</view>
+            </view>
+            <view class="video-popup-item-btn">使用</view>
+        </view>
+    </view>
+</van-popup>

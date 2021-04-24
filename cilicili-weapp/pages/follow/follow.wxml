@@ -1,0 +1,25 @@
+<van-nav-bar border="{{false}}"
+             custom-style="background: transparent!important;"
+             fixed="{{true}}"
+             bind:click-left="onClickLeft">
+    <van-icon name="arrow-left" slot="left"/>
+</van-nav-bar>
+
+<video-list videoList="{{videoList}}"/>
+
+<van-tabbar border="{{false}}" id="bottom-bar">
+    <view class="barrage-input">
+        <image class="send-image" src="../../assets/send.svg"/>
+        <input adjust-position="{{false}}"
+               value="{{barrageInputValue}}"
+               bind:input="barrageInput"
+               maxlength="500"
+               placeholder="What do you want to say ?"/>
+    </view>
+    <van-button class="send-btn"
+                color="linear-gradient(to right, #4bb0ff, #6149f6)"
+                bind:click="clickSubmit"
+                round>
+        Submit
+    </van-button>
+</van-tabbar>

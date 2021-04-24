@@ -1,0 +1,22 @@
+page {
+    background: #1b2021;
+    color: #ffffff;
+}
+
+image {
+    border-radius: 50%;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.index-scroll-view {
+    width: 100vw;
+}
+
+.van-icon {
+    font-weight: 900 !important;
+}

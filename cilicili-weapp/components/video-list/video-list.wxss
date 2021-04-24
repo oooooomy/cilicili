@@ -1,0 +1,132 @@
+.video-swiper {
+    width: 100%;
+    height: 100vh;
+}
+
+.video-item {
+    width: 100%;
+    height: 100vh;
+}
+
+.swiper-stop {
+    position: absolute;
+    top: 30vh;
+    left: 50vw;
+    z-index: 99;
+    width: 20vw;
+    height: 20vw;
+}
+
+.swiper-right-bar {
+    width: 100rpx;
+    position: absolute;
+    z-index: 9;
+    right: 20rpx;
+    bottom: 12vh;
+    text-align: center;
+    will-change: transform;
+}
+
+.swiper-avatar-v {
+    margin-bottom: 10rpx;
+}
+
+.swiper-avatar {
+    border: 2px solid #ffffff;
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 50%;
+}
+
+.swiper-avatar2 {
+    animation: rotate 6s linear infinite;
+    margin: 10rpx auto auto;
+    border: 25rpx solid #1b1717;
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0deg); /*从0度开始*/
+    }
+    100% {
+        transform: rotateZ(360deg); /*360度结束*/
+    }
+}
+
+.swiper-bar-item {
+    margin-bottom: 40rpx;
+}
+
+.swiper-bar-v1 {
+    font-size: 30rpx;
+    font-weight: 500;
+    letter-spacing: 2rpx;
+}
+
+.follow-icon {
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    transform: translateY(-15px);
+    border-radius: 50%;
+    background: #f05945;
+}
+
+.follow-icon-img {
+    width: 10px;
+    height: 10px;
+    transform: translateY(-2px);
+}
+
+.swiper-music {
+    will-change: transform;
+    width: 73vw;
+    position: absolute;
+    bottom: 12vh;
+    z-index: 9;
+    letter-spacing: 1px;
+    font-size: 30rpx;
+    font-weight: 500;
+    color: rgba(256, 256, 256, .7);
+    padding-top: 20rpx;
+    line-height: 50rpx;
+}
+
+.swiper-music-v1 {
+    padding-left: 30rpx;
+    font-size: 40rpx;
+    color: #ffffff;
+    padding-bottom: 15rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.swiper-music-v2 {
+    padding-left: 28rpx;
+    font-size: 33rpx;
+    color: rgba(256, 256, 256, .9);
+    padding-bottom: 15rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    line-height: 50rpx;
+    max-height: 190rpx;
+    -webkit-line-clamp: 4;
+}
+
+.swiper-music-v3 {
+    padding-right: 50rpx;
+}
+
+.swiper-music-img {
+    width: 40rpx;
+    height: 40rpx;
+    transform: translateY(10rpx);
+    margin-right: 10rpx;
+}

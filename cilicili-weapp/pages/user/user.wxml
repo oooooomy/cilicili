@@ -1,0 +1,71 @@
+<van-nav-bar
+        fixed="{{true}}"
+        placeholder="{{true}}"
+        border="{{false}}"
+        custom-style="background: #1b2021;"
+        bind:click-left="onClickLeft"
+>
+    <view slot="left" class="my-van-header-left">
+        <van-icon name="arrow-left" class="return-icon"/>
+    </view>
+    <view slot="title" class="my-van-header-title">Trang Anna</view>
+</van-nav-bar>
+
+<image src="../../assets/aa.jpg" class="user-avatar"/>
+<view class="user-username">@Soanra</view>
+<view class="user-des">
+    <view style="display: flex;">
+        <view class="user-des-item">
+            <view class="user-des-item-d1">12</view>
+            <view class="user-des-item-d2">Follows</view>
+        </view>
+        <view class="user-des-item">
+            <view class="user-des-item-d1">193.8K</view>
+            <view class="user-des-item-d2">Manuscripts</view>
+        </view>
+        <view class="user-des-item">
+            <view class="user-des-item-d1">722.8K</view>
+            <view class="user-des-item-d2">Likes</view>
+        </view>
+    </view>
+    <view class="user-des-follow">
+        <van-row gutter="10">
+            <van-col span="14">
+                <view class="user-des-follow-btn">Follow</view>
+            </van-col>
+            <van-col span="5">
+                <van-button icon="smile-comment-o" type="default"/>
+            </van-col>
+            <van-col span="5">
+                <van-button icon="like-o" type="default"/>
+            </van-col>
+        </van-row>
+    </view>
+    <view class="user-des-text">
+        ❤️ 关注我吧
+    </view>
+</view>
+
+<van-tabs active="{{ active }}"
+          color="#fb3640"
+          bind:change="onChange"
+          title-active-color="#ffffff">
+    <van-tab title="作品34">
+        <view style="width:100%;height:20rpx"/>
+        <van-row gutter="1">
+            <van-col span="8" wx:for="{{list}}" wx:key="index">
+                <view class="user-like-item"></view>
+            </van-col>
+        </van-row>
+        <view class="user-not-more">没有更多了～</view>
+    </van-tab>
+    <van-tab title="喜欢12">
+        <view style="width:100%;height:20rpx"/>
+        <van-row gutter="1">
+            <van-col span="8" wx:for="{{list}}" wx:key="index">
+                <view class="user-like-item"></view>
+            </van-col>
+        </van-row>
+        <view class="user-not-more">没有更多了～</view>
+    </van-tab>
+</van-tabs>

@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+  }
+}

@@ -1,0 +1,72 @@
+<swiper vertical="{{true}}"
+        class="video-swiper"
+        duration="{{330}}"
+        bindchange="swiperChange">
+    <block wx:for="{{videoList}}" wx:key="index">
+        <swiper-item>
+
+            <view class="swiper-right-bar">
+                <view class="swiper-avatar-v">
+                    <image class="swiper-avatar"
+                           src="../../assets/aa.jpg"
+                           data-id="{{index}}"
+                           bind:tap="openUserDetails"/>
+                    <view class="follow-icon">
+                        <image class="follow-icon-img" src="../../assets/add.svg"></image>
+                    </view>
+                </view>
+                <view class="swiper-bar-item">
+                    <van-icon name="like" size="80rpx"/>
+                    <view class="swiper-bar-v1">1233</view>
+                </view>
+                <view class="swiper-bar-item" bindtap="openComment">
+                    <van-icon name="chat" size="80rpx"/>
+                    <view class="swiper-bar-v1">98</view>
+                </view>
+                <view class="swiper-bar-item">
+                    <van-icon name="share" size="80rpx"/>
+                    <view class="swiper-bar-v1">34</view>
+                </view>
+                <view class="swiper-avatar-v">
+                    <image class="swiper-avatar2" src="https://img.yzcdn.cn/vant/cat.jpeg"></image>
+                </view>
+            </view>
+
+            <view class="swiper-music">
+                <view class="swiper-music-v1">
+                    @Soanr
+                </view>
+                <view class="swiper-music-v2">
+                    <view class="van-multi-ellipsis--l3">
+                        大家还好好的挥洒哈哈好的挥洒哈哈，大家撒娇叫都睡觉啊叫撒娇点睡觉啊叫睡觉，都睡觉啊叫撒娇
+                    </view>
+                </view>
+                <view class="swiper-music-v3">
+                    <van-notice-bar
+                            color="#ffffff"
+                            background="transparent"
+                            left-icon="volume-o"
+                            text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+                    />
+                </view>
+            </view>
+
+            <video class="video-item"
+                   id="{{ index }}"
+                   show-center-play-btn="{{false}}"
+                   enable-progress-gesture="{{false}}"
+                   object-fit="{{item.isVertical ? 'cover' : 'contain'}}"
+                   src="{{item.url}}"
+                   controls="{{false}}"
+                   loop="{{ture}}"/>
+        </swiper-item>
+    </block>
+</swiper>
+
+<van-popup
+        show="{{ showComment }}"
+        round
+        position="bottom"
+        custom-style="height: 75%;background: #ffffff;"
+        bind:close="onCloseComment"
+/>

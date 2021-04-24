@@ -1,0 +1,46 @@
+.room-header {
+    letter-spacing: 1px;
+    font-size: 26rpx;
+    transform: translateY(-7rpx);
+    color: #ffffff;
+    font-weight: 500;
+}
+
+video {
+    width: 100%;
+}
+
+.van-tabbar {
+    background: rgba(256, 256, 256, .1) !important;
+}
+
+.barrage-input {
+    display: flex;
+    width: 100vw;
+    margin-left: 2vw;
+    padding: 20rpx;
+    border-radius: 20px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+input {
+    height: 100%;
+    width: 70%;
+}
+
+.send-image {
+    width: 55rpx;
+    height: 55rpx;
+    margin-right: 30rpx;
+}
+
+.van-button {
+    height: 65rpx !important;
+}
+
+.send-btn {
+    margin-top: 18rpx;
+    margin-right: 20rpx;
+}

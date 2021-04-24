@@ -1,0 +1,39 @@
+<van-nav-bar border="{{false}}"
+             custom-style="background: #1b2021;"
+             fixed="{{true}}"
+             placeholder="{{true}}"
+             bind:click-left="onClickLeft">
+    <text slot="left" class="live-header">正在直播</text>
+</van-nav-bar>
+
+<swiper style="padding: 20rpx;margin-bottom: 5rpx;"
+        class="live-swiper"
+        bindchange="swiperChange"
+        current="{{current}}"
+        duration="300"
+        interval="2500"
+        circular="{{true}}">
+    <swiper-item wx:for="{{posterList}}" wx:key="index">
+        <image class="card-image" mode="aspectFill" src="https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/dy1%20%284%29.jpeg"></image>
+    </swiper-item>
+</swiper>
+<view class="swiper-t">
+    <view wx:for="{{posterList}}"
+          wx:key="index"
+          class="{{index === current ? 'swiper-t-item active' : 'swiper-t-item'}}"/>
+</view>
+
+<view class="content">
+    <van-row gutter="8">
+        <van-col span="12" wx:for="{{roomList}}" wx:key="index">
+            <view class="room-card" bind:tap="clickRoom" data-id="{{item.id}}">
+                <image mode="aspectFill" class="room-card-image" src="{{item.url}}"></image>
+                <view class="room-card-t">{{item.title}}</view>
+                <view class="room-card-d">{{item.name}}</view>
+            </view>
+        </van-col>
+    </van-row>
+</view>
+
+<view class="user-not-more">没有更多了～</view>
+  

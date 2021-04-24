@@ -1,0 +1,31 @@
+<home wx:if="{{active===0}}"/>
+
+<scroll-view wx:if="{{active!==0}}" scroll-x="{{false}}"
+             class="index-scroll-view"
+             style="{{'height:' + Height +'px'}}"
+             enhanced="{{true}}"
+             show-scrollbar="{{false}}"
+             scroll-y="{{true}}">
+    <live wx:if="{{active===1}}"/>
+    <me wx:if="{{active===2}}"/>
+</scroll-view>
+
+<view id="">
+    <van-tabbar active="{{ active }}"
+                active-color="#ffffff"
+                id="demo"
+                border="{{false}}"
+                bind:change="onChange">
+        <van-tabbar-item>
+            <van-icon style="padding-bottom: 20rpx" name="wap-home-o" size="58rpx"/>
+        </van-tabbar-item>
+        <van-tabbar-item>
+            <van-icon style="padding-bottom: 20rpx" name="bar-chart-o" size="58rpx"/>
+        </van-tabbar-item>
+        <van-tabbar-item>
+            <van-icon style="padding-bottom: 20rpx" name="contact" size="58rpx"/>
+        </van-tabbar-item>
+    </van-tabbar>
+</view>
+
+<view class="welcome" wx:if="{{loading}}">Cilicili</view>

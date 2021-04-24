@@ -1,0 +1,8 @@
+<van-nav-bar border="{{false}}"
+             custom-style="background: transparent!important;"
+             fixed="{{true}}"
+             bind:click-left="onClickLeft">
+    <text slot="left" class="live-header">关注</text>
+</van-nav-bar>
+
+<video-list videoList="{{videoList}}"/>

@@ -1,0 +1,31 @@
+server:
+  port: 8762
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 启用服务发现自动路由
+          enabled: true
+      routes:
+        #user服务路由
+        - id: routes-user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+        #video服务路由
+        - id: routes-video-service
+          uri: lb://video-service
+          predicates:
+            - Path=/video/**
+      #去除路由前缀
+      default-filters:
+        - StripPrefix=1
+
+#注册到Eureka注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

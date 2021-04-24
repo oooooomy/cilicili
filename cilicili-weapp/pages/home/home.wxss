@@ -1,0 +1,36 @@
+.home-header {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    z-index: 99;
+    top: 13vh;
+    left: 0;
+}
+
+.live-header {
+    transform: translateY(-10rpx);
+    font-size: 30rpx;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.live-icon {
+    padding-right: 5rpx;
+    transform: translateY(5rpx);
+}
+
+.home-title {
+    font-weight: 500;
+    font-size: 35rpx;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.home-title2 {
+    font-weight: 500;
+    font-size: 30rpx;
+    padding: 0 30rpx;
+    color: rgba(256, 256, 256, .7);
+    letter-spacing: 1px;
+}
