@@ -4,6 +4,11 @@
     padding-top: 5px;
 }
 
+.van-tabs__scroll {
+    background: transparent !important;
+    letter-spacing: 2px !important;
+}
+
 .tabbar-add {
     width: 65rpx;
     line-height: 40rpx;

@@ -1,72 +1,85 @@
-<swiper vertical="{{true}}"
-        class="video-swiper"
-        duration="{{330}}"
-        bindchange="swiperChange">
-    <block wx:for="{{videoList}}" wx:key="index">
-        <swiper-item>
-
-            <view class="swiper-right-bar">
-                <view class="swiper-avatar-v">
-                    <image class="swiper-avatar"
-                           src="../../assets/aa.jpg"
-                           data-id="{{index}}"
-                           bind:tap="openUserDetails"/>
-                    <view class="follow-icon">
-                        <image class="follow-icon-img" src="../../assets/add.svg"></image>
-                    </view>
-                </view>
-                <view class="swiper-bar-item">
-                    <van-icon name="like" size="80rpx"/>
-                    <view class="swiper-bar-v1">1233</view>
-                </view>
-                <view class="swiper-bar-item" bindtap="openComment">
-                    <van-icon name="chat" size="80rpx"/>
-                    <view class="swiper-bar-v1">98</view>
-                </view>
-                <view class="swiper-bar-item">
-                    <van-icon name="share" size="80rpx"/>
-                    <view class="swiper-bar-v1">34</view>
-                </view>
-                <view class="swiper-avatar-v">
-                    <image class="swiper-avatar2" src="https://img.yzcdn.cn/vant/cat.jpeg"></image>
+<swiper vertical="{{true}}" class="video-swiper" duration="{{330}}" bindchange="swiperChange">
+    <swiper-item wx:for="{{videoList}}" wx:key="index">
+        <view class="swiper-right-bar">
+            <view class="swiper-avatar-v">
+                <image class="swiper-avatar" src="{{item.userAvatar}}" data-id="{{item.userId}}"
+                       bind:tap="openUserDetails"/>
+                <view class="follow-icon">
+                    <image class="follow-icon-img" src="../../assets/add.svg"></image>
                 </view>
             </view>
-
-            <view class="swiper-music">
-                <view class="swiper-music-v1">
-                    @Soanr
-                </view>
-                <view class="swiper-music-v2">
-                    <view class="van-multi-ellipsis--l3">
-                        大家还好好的挥洒哈哈好的挥洒哈哈，大家撒娇叫都睡觉啊叫撒娇点睡觉啊叫睡觉，都睡觉啊叫撒娇
-                    </view>
-                </view>
-                <view class="swiper-music-v3">
-                    <van-notice-bar
-                            color="#ffffff"
-                            background="transparent"
-                            left-icon="volume-o"
-                            text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-                    />
-                </view>
+            <view class="swiper-bar-item">
+                <van-icon name="like" size="80rpx" data-videoId="{{item.id}}" bindtap="onClickLike"/>
+                <view class="swiper-bar-v1">{{item.likeCount}}</view>
             </view>
-
-            <video class="video-item"
-                   id="{{ index }}"
-                   show-center-play-btn="{{false}}"
-                   enable-progress-gesture="{{false}}"
-                   object-fit="{{item.isVertical ? 'cover' : 'contain'}}"
-                   src="{{item.url}}"
-                   controls="{{false}}"
-                   loop="{{ture}}"/>
-        </swiper-item>
-    </block>
+            <view class="swiper-bar-item" data-videoId="{{item.id}}" bindtap="openComment">
+                <van-icon name="chat" size="80rpx"/>
+                <view class="swiper-bar-v1">{{item.commentCount}}</view>
+            </view>
+            <view class="swiper-bar-item">
+                <van-icon name="share" bind:tap="openShare" size="80rpx"/>
+                <view class="swiper-bar-v1">{{item.shareCount}}</view>
+            </view>
+            <view class="swiper-avatar-v">
+                <image class="swiper-avatar2"
+                       src="{{item.useMusic ? base + '/upload-service/file/image/'+item.musicPoster : item.userAvatar}}"/>
+            </view>
+        </view>
+        <view class="swiper-music">
+            <view class="swiper-music-v1">@{{item.userNickname}}</view>
+            <view class="swiper-music-v2">
+                <view class="van-multi-ellipsis--l3">{{item.title}}</view>
+            </view>
+            <view class="swiper-music-v3">
+                <van-notice-bar color="#ffffff" background="transparent" left-icon="volume-o"
+                                text="{{item.useMusic ? item.musicAuthor + ' - ' + item.musicName : item.userNickname + ' - 原声'}}"/>
+            </view>
+        </view>
+        <video class="video-item" id="{{ index }}" show-center-play-btn="{{false}}" enable-progress-gesture="{{false}}"
+               object-fit="cover" src="{{base + '/upload-service/file/mp4/' +item.url}}" controls="{{false}}"
+               loop="{{true}}"/>
+    </swiper-item>
 </swiper>
 
-<van-popup
-        show="{{ showComment }}"
-        round
-        position="bottom"
-        custom-style="height: 75%;background: #ffffff;"
-        bind:close="onCloseComment"
+<van-popup show="{{ showComment }}" round position="bottom"
+           custom-style="height: 80%;background: rgba(0,0,0,.9)!important;"
+           bind:close="onCloseComment">
+
+    <view class="popup-comments">
+        <view class="popup-comments-item" wx:for="{{commentList}}" wx:key="index">
+            <view>
+                <image class="popup-comments-item-img" src="{{item.userAvatar}}" />
+            </view>
+            <view class="popup-comments-content">
+                <view class="popup-comments-content1">{{item.userNickname}}</view>
+                <view class="popup-comments-content2">{{item.content}}</view>
+                <view class="popup-comments-content3">{{item.createAt}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="popup-comments-bottom" />
+
+    <van-tabbar border="{{false}}" id="bottom-bar">
+        <view class="barrage-input">
+            <image class="send-image" src="../../assets/send.svg"/>
+            <input adjust-position="{{false}}"
+                   value="{{barrageInputValue}}"
+                   bind:input="barrageInput"
+                   maxlength="500"
+                   placeholder="快来发一条评论吧！"/>
+        </view>
+        <van-button class="send-btn"
+                    color="linear-gradient(to right, #4bb0ff, #6149f6)"
+                    bind:click="clickSubmit"
+                    round>
+            Submit
+        </van-button>
+    </van-tabbar>
+</van-popup>
+
+<van-share-sheet
+        show="{{ showShare }}"
+        bind:close="onCloseShare"
+        title="立即分享给好友"
+        options="{{ options }}"
 />

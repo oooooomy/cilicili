@@ -3,10 +3,6 @@ page {
     color: #ffffff;
 }
 
-image {
-    border-radius: 50%;
-}
-
 ::-webkit-scrollbar {
     width: 0;
     height: 0;

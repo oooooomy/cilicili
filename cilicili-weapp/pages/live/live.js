@@ -1,9 +1,5 @@
-// pages/home/home.js
-Page({
+Component({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
         current: 0,
         active: 0,
@@ -48,29 +44,26 @@ Page({
         ]
     },
 
-    clickRoom(e) {
-        wx.navigateTo({
-            url: '/pages/room/room'
-        })
+    // 在组件实例进入页面节点树时执行
+    attached: function () {
+        console.log("Live page attached")
     },
 
-    swiperChange(e) {
-        this.setData({current: e.detail.current})
+    // 在组件实例被从页面节点树移除时执行
+    detached: function () {
+        console.log("Live page detached")
     },
 
+    methods: {
+        clickRoom(e) {
+            wx.navigateTo({
+                url: '/pages/room/room'
+            })
+        },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+        swiperChange(e) {
+            this.setData({current: e.detail.current})
+        },
     },
 
 })

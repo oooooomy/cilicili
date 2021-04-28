@@ -5,61 +5,65 @@
     <text slot="left" class="live-header">我的</text>
 </van-nav-bar>
 
-<image src="../../assets/aa.jpg" class="user-avatar"/>
-<view class="user-username">@Soanra</view>
+<image src="{{userInfo.avatarUrl}}" class="user-avatar"/>
+<view class="user-username">@ {{userInfo.nickname}}</view>
 <view class="user-des">
     <view style="display: flex;">
         <view class="user-des-item">
-            <view class="user-des-item-d1">12</view>
-            <view class="user-des-item-d2">Follows</view>
+            <view class="user-des-item-d1">{{userInfo.followCount}}</view>
+            <view class="user-des-item-d2">关注</view>
         </view>
         <view class="user-des-item">
-            <view class="user-des-item-d1">193.8K</view>
-            <view class="user-des-item-d2">Manuscripts</view>
+            <view class="user-des-item-d1">{{userInfo.fansCount}}</view>
+            <view class="user-des-item-d2">粉丝</view>
         </view>
         <view class="user-des-item">
-            <view class="user-des-item-d1">722.8K</view>
-            <view class="user-des-item-d2">Likes</view>
+            <view class="user-des-item-d1">{{likeList.length}}</view>
+            <view class="user-des-item-d2">喜欢</view>
         </view>
     </view>
     <view class="user-des-follow">
         <van-row gutter="10">
-            <van-col span="14">
+            <van-col span="18">
                 <view class="user-des-follow-btn" bind:tap="onClickUpload">发个作品</view>
             </van-col>
             <van-col span="5">
-                <van-button icon="smile-comment-o" type="default"/>
-            </van-col>
-            <van-col span="5">
-                <van-button icon="like-o" type="default"/>
+                <van-button type="default" icon="info-o"/>
             </van-col>
         </van-row>
     </view>
-    <view class="user-des-text">
-        ❤️ 关注我吧
-    </view>
+    <view class="user-des-text">{{userInfo.address}} ❤️</view>
 </view>
 
 <van-tabs active="{{ active }}"
           color="#fb3640"
-          bind:change="onChange"
           title-active-color="#ffffff">
-    <van-tab title="作品34">
+    <van-tab title="{{'作品'+uploadList.length}}">
         <view style="width:100%;height:20rpx"/>
-        <van-row gutter="1">
-            <van-col span="8" wx:for="{{list}}" wx:key="index">
-                <view class="user-like-item"></view>
-            </van-col>
-        </van-row>
+        <view bind:tap="onUpload">
+            <van-row gutter="1">
+                <van-col span="8" wx:for="{{uploadList}}" wx:key="index">
+                    <view class="user-like-item">
+                        <image mode="aspectFill" class="user-like-item-img"
+                               src="{{base+'/upload-service/file/image/'+item.poster}}"/>
+                    </view>
+                </van-col>
+            </van-row>
+        </view>
         <view class="user-not-more">没有更多了～</view>
     </van-tab>
-    <van-tab title="喜欢12">
+    <van-tab title="{{'喜欢'+likeList.length}}">
         <view style="width:100%;height:20rpx"/>
-        <van-row gutter="1">
-            <van-col span="8" wx:for="{{list}}" wx:key="index">
-                <view class="user-like-item"></view>
-            </van-col>
-        </van-row>
+        <view bind:tap="onLike">
+            <van-row gutter="1">
+                <van-col span="8" wx:for="{{likeList}}" wx:key="index">
+                    <view class="user-like-item">
+                        <image mode="aspectFill" class="user-like-item-img"
+                               src="{{base+'/upload-service/file/image/'+item.poster}}"/>
+                    </view>
+                </van-col>
+            </van-row>
+        </view>
         <view class="user-not-more">没有更多了～</view>
     </van-tab>
 </van-tabs>

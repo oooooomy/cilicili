@@ -1,7 +1,17 @@
 App({
 
     globalData: {
-        userInfo: null,
+        userInfo: {
+            id: '',
+            nickname: '未授权',
+            address: '',
+            gender: '',
+            avatarUrl: '',
+            hasInfo: '',
+            fansCount: 0,
+            followCount: 0,
+            likeCount: 0,
+        },
         BottomTabBarHeight: 0,
         windowHeight: 0,
         windowWidth: 0,
@@ -12,10 +22,16 @@ App({
 
         wx.login({
             success: (res) => {
-                console.log(res)
+                console.log("wx login success")
                 wx.request({
-                    url: 'http://localhost:8080/login?code=' + res.code,
-                    method: "POST"
+                    url: this.globalData.baseUrl + '/account-service/login?code=' + res.code,
+                    method: "POST",
+                    success: (res) => {
+                        if (res.data.code === 200) {
+                            this.globalData.userInfo = res.data.data
+                            console.log('get account success')
+                        }
+                    }
                 })
             }
         })

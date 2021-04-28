@@ -1,4 +1,5 @@
 {
+  "component": true,
   "usingComponents": {
     "video-list": "/components/video-list/video-list",
     "van-tab": "@vant/weapp/tab/index",

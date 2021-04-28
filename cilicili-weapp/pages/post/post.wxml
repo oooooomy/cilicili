@@ -1,0 +1,20 @@
+<van-nav-bar border="{{false}}"
+             custom-style="background: transparent!important;"
+             fixed="{{true}}"
+             placeholder="{{true}}"
+             bind:click-left="onClickLeft">
+    <van-icon name="arrow-left" slot="left"/>
+    <text style="color:#ffffff;" slot="title">发布</text>
+</van-nav-bar>
+
+<view class="post-main">
+    <form bindsubmit="bindFormSubmit">
+        <textarea adjust-position="{{false}}"
+                name="textarea"
+              maxlength="50"
+              placeholder="请输入你的标题，让更多的人看得见"/>
+    <view class="post-divider" />
+    <view class="title">@Title</view>
+    <button class="submit-btn"  form-type="submit">发布视频</button>
+    </form>
+</view>

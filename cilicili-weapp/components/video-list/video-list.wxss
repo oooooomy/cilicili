@@ -130,3 +130,84 @@
     transform: translateY(10rpx);
     margin-right: 10rpx;
 }
+
+.popup-comments-bottom{
+    width: 100vw;
+    height: 190rpx;
+    background: #000000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.van-tabbar {
+    background: #000000 !important;
+    border-top: 1px solid rgba(256, 256, 256, .1);
+    padding-top: 5px;
+}
+
+.barrage-input {
+    display: flex;
+    width: 100vw;
+    margin-left: 2vw;
+    padding: 20rpx;
+    border-radius: 20px;
+    color: rgba(256, 256, 256, .8);
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+input {
+    height: 100%;
+    width: 70%;
+}
+
+.send-image {
+    width: 55rpx;
+    height: 55rpx;
+    margin-right: 30rpx;
+}
+
+.van-button {
+    height: 65rpx !important;
+}
+
+.send-btn {
+    margin-top: 18rpx;
+    margin-right: 20rpx;
+}
+
+.popup-comments-item {
+    display: flex;
+    padding: 30rpx;
+}
+
+.popup-comments-content {
+    padding-left: 30rpx;
+    letter-spacing: 1px;
+}
+
+.popup-comments-content1 {
+    color: rgba(256, 256, 256, .7);
+    font-size: 26rpx;
+    line-height: 45rpx;
+}
+
+.popup-comments-content2 {
+    color: rgba(256, 256, 256, .9);
+    font-size: 30rpx;
+    line-height: 50rpx;
+}
+
+.popup-comments-content3 {
+    color: rgba(256, 256, 256, .7);
+    font-size: 26rpx;
+    line-height: 45rpx;
+}
+
+.popup-comments-item-img {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-top: 10rpx;
+}

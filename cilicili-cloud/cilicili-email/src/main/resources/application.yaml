@@ -1,0 +1,16 @@
+server:
+  port: 9008
+spring:
+  application:
+    name: email-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  mail:
+    host: smtp.163.com
+    protocol: smtp
+    default-encoding: UTF-8
+    username: gaoyuanming_1@163.com
+    #授权码
+    password: a123456

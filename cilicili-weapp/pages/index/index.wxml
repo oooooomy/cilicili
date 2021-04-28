@@ -1,4 +1,4 @@
-<home wx:if="{{active===0}}"/>
+<home videoList="{{videoList}}" wx:if="{{active===0}}"/>
 
 <scroll-view wx:if="{{active!==0}}" scroll-x="{{false}}"
              class="index-scroll-view"
@@ -6,8 +6,12 @@
              enhanced="{{true}}"
              show-scrollbar="{{false}}"
              scroll-y="{{true}}">
-    <live wx:if="{{active===1}}"/>
-    <me wx:if="{{active===2}}"/>
+    <block wx:if="{{active===1}}">
+        <live/>
+    </block>
+    <block wx:if="{{active===2}}">
+        <me/>
+    </block>
 </scroll-view>
 
 <view id="">

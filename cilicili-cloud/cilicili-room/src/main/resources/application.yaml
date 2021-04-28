@@ -1,0 +1,9 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: room-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

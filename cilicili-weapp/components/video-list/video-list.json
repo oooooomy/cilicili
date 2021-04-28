@@ -1,6 +1,9 @@
 {
   "component": true,
   "usingComponents": {
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-share-sheet": "@vant/weapp/share-sheet/index",
+    "van-button": "@vant/weapp/button/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index"

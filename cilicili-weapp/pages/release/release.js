@@ -6,6 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        base: App.globalData.baseUrl,
+        musicList: [],
         showMusic: false,
         time: 30 * 1000,
         timeData: {},
@@ -14,6 +16,8 @@ Page({
         src: '',
         start: false,
         videoSrc: '',
+        poster: '',
+        tempThumbPath: '',
         cameraData: {
             flash: '',
             devicePosition: true,
@@ -41,6 +45,27 @@ Page({
                     this.setData({cameraAuthorize: true})
                     this.cameraContext = wx.createCameraContext();
                 }
+            }
+        })
+    },
+
+    //选择使用的音乐
+    selectMusic(e) {
+        console.log(e.currentTarget.dataset.music)
+        this.setData({
+            showMusic: false,
+            selectMusic: e.currentTarget.dataset.music,
+        })
+    },
+
+    loadMusicList() {
+        wx.request({
+            url: App.globalData.baseUrl + "/upload-service/music",
+            method: "GET",
+            success: (res) => {
+                this.setData({
+                    musicList: res.data.data
+                })
             }
         })
     },
@@ -79,16 +104,18 @@ Page({
     onClickStart() {
         if (this.data.cameraAuthorize) {
             this.openVibrate()
+            wx.showLoading({
+                title: '发起摄像头',
+            })
             this.cameraContext.startRecord({
                 success: () => {
                     this.setData({start: true})
-                    setTimeout(() => {
-                        wx.showLoading({title: '加载中', mask: true})
-                    }, 30 * 1000)
+                    wx.hideLoading({})
                 },
                 timeoutCallback: (res) => {
                     this.setData({
                         videoSrc: res.tempVideoPath,
+                        tempThumbPath: res.tempThumbPath,
                         start: false,
                         over: true,
                     })
@@ -106,6 +133,7 @@ Page({
             success: (res) => {
                 this.setData({
                     videoSrc: res.tempVideoPath,
+                    tempThumbPath: res.tempThumbPath,
                     start: false,
                     over: true,
                 })
@@ -115,22 +143,80 @@ Page({
     },
 
     //点击发布视频
-    onClickSubmitVidoe(){
+    onClickSubmitVidoe() {
+        let videoForm = {
+            url: '',
+            poster: '',
+            userId: App.globalData.userInfo.id,
+            userNickname: App.globalData.userInfo.nickname,
+            userAvatar: App.globalData.userInfo.avatarUrl,
+            musicName: '',
+            musicAuthor: '',
+            musicPoster: '',
+            musicUrl: '',
+            musicId: '',
+            useMusic: false,
+            title: '',
+            likeCount: 0,
+            commentCount: 0,
+            shareCount: 0,
+        }
         wx.showLoading({
-          title: '正在上传中',
+            title: '正在上传中',
         })
         wx.uploadFile({
-          filePath: this.data.videoSrc,
-          name: 'file',
-          url: App.globalData.baseUrl +  '/video/upload/mp4',
-          success: (res)=>{
-              console.log(res.data.data)
-              wx.hideLoading({})
-          },
-
-          fail: (err) => {
-              console.log(err)
-          }
+            timeout: 1000 * 60 * 60 * 10,
+            filePath: this.data.tempThumbPath,
+            name: 'file',
+            url: App.globalData.baseUrl + '/upload-service/file/jpg',
+            success: (res) => {
+                const parse = JSON.parse(res.data);
+                videoForm.poster = parse.data
+            }
+        })
+        wx.uploadFile({
+            timeout: 1000 * 60 * 60 * 10,
+            filePath: this.data.videoSrc,
+            name: 'file',
+            url: App.globalData.baseUrl + '/upload-service/file/mp4',
+            success: (res) => {
+                const data = JSON.parse(res.data)
+                if (data.code === 200) {
+                    wx.hideLoading({})
+                    videoForm.url = data.data
+                    if (this.data.selectMusic) {
+                        videoForm.musicId = this.data.selectMusic.id
+                        videoForm.musicName = this.data.selectMusic.name
+                        videoForm.musicAuthor = this.data.selectMusic.author
+                        videoForm.musicPoster = this.data.selectMusic.poster
+                        videoForm.musicUrl = this.data.selectMusic.url
+                        videoForm.useMusic = true
+                    }
+                    wx.navigateTo({
+                        url: '/pages/post/post?videoForm=' + JSON.stringify(videoForm),
+                        success: (res) => {
+                            this.setData({
+                                selectMusic: {}
+                            })
+                        }
+                    })
+                } else {
+                    wx.showToast({
+                        title: '上传失败',
+                        icon: 'error',
+                        duration: 2000
+                    })
+                    console.log("Request error: ", data.msg)
+                }
+            },
+            fail: (err) => {
+                wx.showToast({
+                    title: '上传失败',
+                    icon: 'error',
+                    duration: 2000
+                })
+                console.log('文件上传失败： ', err)
+            }
         })
     },
 
@@ -144,13 +230,14 @@ Page({
     },
 
     //点击选择音乐
-    onClickSelectMusic(){
+    onClickSelectMusic() {
+        this.loadMusicList()
         this.setData({
             showMusic: true
         })
     },
 
-    onCloseMusic(){
+    onCloseMusic() {
         this.setData({
             showMusic: false
         })

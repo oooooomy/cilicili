@@ -1,4 +1,5 @@
 {
+  "component": true,
   "usingComponents": {
     "van-nav-bar": "@vant/weapp/nav-bar/index",
     "van-tab": "@vant/weapp/tab/index",

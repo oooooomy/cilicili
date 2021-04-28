@@ -2,7 +2,7 @@
              bind:click-left="onClickLeft"
              custom-style="background: transparent;">
     <view slot="title" class="release-music" bindtap="onClickSelectMusic">
-        <van-icon name="music"/>
+        <van-icon name="volume-o"/>
         <text class="release-music-t">选择音乐</text>
     </view>
     <van-icon slot="left" size="45rpx" name="cross"/>
@@ -83,29 +83,24 @@
 </van-popup>
 
 <van-popup
-  show="{{ showMusic }}"
-  position="bottom"
-  closeable
-  custom-style="height: 85%;"
-  bind:close="onCloseMusic"
+        show="{{ showMusic }}"
+        position="bottom"
+        custom-style="height: 95%;"
+        bind:close="onCloseMusic"
 >
-    <view class="video-popup-title">选择音乐</view>
+    <view class="video-popup-title">
+        <van-icon bind:tap="onCloseMusic" size="40rpx" class="popup-close" name="cross"/>
+        选择音乐
+    </view>
     <view class="video-popup-list">
-        <view class="video-popup-item">
-            <image class="video-popup-item-img" src="../../assets/aa.jpg"/>
-            <view class="video-popup-item-des">
-                <view class="video-popup-item-des1">Buling Buling</view>
-                <view class="video-popup-item-des2">iu</view>
-            </view>
-            <view class="video-popup-item-btn">使用</view>
-        </view>
-        <view class="video-popup-item">
-            <image class="video-popup-item-img" src="../../assets/aa.jpg"/>
-            <view class="video-popup-item-des">
-                <view class="video-popup-item-des1">Buling Buling</view>
-                <view class="video-popup-item-des2">iu</view>
-            </view>
-            <view class="video-popup-item-btn">使用</view>
+        <image class="video-title-img"
+               mode="aspectFill"
+               src="https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/music.jpg"/>
+        <view class="music-item" wx:for="{{musicList}}" wx:key="index">
+            <image class="music-img" src="{{base+'/upload-service/file/image/'+ item.poster}}"/>
+            <view class="music-title">{{item.name}}</view>
+            <view class="music-name">{{item.author}}</view>
+            <view class="music-btn" data-music="{{item}}" bindtap="selectMusic">使用</view>
         </view>
     </view>
 </van-popup>

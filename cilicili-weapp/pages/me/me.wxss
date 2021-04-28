@@ -18,6 +18,7 @@
 .user-avatar {
     width: 24vw;
     height: 24vw;
+    border-radius: 50%;
     margin-left: 38vw;
     margin-top: 20rpx;
 }
@@ -81,7 +82,11 @@
     margin-top: 1px;
     width: 100%;
     height: 300rpx;
-    background: #ffffff;
+}
+
+.user-like-item-img{
+    width: 100%;
+    height: 100%;
 }
 
 .user-not-more {

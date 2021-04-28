@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: upload-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  servlet:
+    multipart:
+      max-request-size: 1000MB
+      max-file-size: 1000MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cilicili?characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: abc521521521
+  jpa:
+    open-in-view: false
+
+#本地文件保存路径配置
+temp-path: /Users/soanr/Desktop/temp
+#本地ffmpeg路径
+ffmpeg-path: /Users/soanr/Desktop/ffmpeg
