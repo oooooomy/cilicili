@@ -26,7 +26,7 @@
 <view class="content">
     <van-row gutter="8">
         <van-col span="12" wx:for="{{roomList}}" wx:key="index">
-            <view class="room-card" bind:tap="clickRoom" data-id="{{item.id}}">
+            <view class="room-card" data-roomId="{{item.id}}" bind:tap="clickRoom" data-id="{{item.id}}">
                 <image mode="aspectFill" class="room-card-image" src="{{item.url}}"></image>
                 <view class="room-card-t">{{item.title}}</view>
                 <view class="room-card-d">{{item.name}}</view>
@@ -35,5 +35,4 @@
     </van-row>
 </view>
 
-<view class="user-not-more">没有更多了～</view>
   

@@ -1,3 +1,51 @@
+.room-main {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(29, 29, 31, .9) !important;
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.background-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -999;
+}
+
+.room-des {
+    display: flex;
+    width: 100vw;
+    padding: 30rpx;
+    letter-spacing: 1px;
+}
+
+.room-des2 {
+    font-size: 25rpx;
+    line-height: 50rpx;
+    letter-spacing: 1px;
+    padding: 30rpx;
+    color: rgba(256, 256, 256, .5);
+}
+
+.room-des-t1 {
+    font-weight: 500;
+    font-size: 25rpx;
+    padding-top: 5rpx;
+}
+
+.room-des-t2 {
+    font-size: 20rpx;
+    padding-top: 10rpx;
+    color: rgba(256, 256, 256, .5);
+}
+
+.room-avatar {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    margin-right: 30rpx;
+}
+
 .room-header {
     letter-spacing: 1px;
     font-size: 26rpx;

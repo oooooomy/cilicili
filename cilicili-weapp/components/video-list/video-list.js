@@ -64,6 +64,11 @@ Component({
                 this.videoContext.pause()
                 this.videoContext = wx.createVideoContext(e.detail.current.toString(), this)
                 this.videoContext.play()
+                for(let i =1;i<99;i++){
+                    setTimeout(()=>{
+                        this.videoContext = wx.createVideoContext(e.detail.current.toString(), this)
+                    },20)
+                }
                 this.setData({isStop: false})
             }
         },

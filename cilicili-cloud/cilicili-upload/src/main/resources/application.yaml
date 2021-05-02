@@ -22,4 +22,10 @@ spring:
 #本地文件保存路径配置
 temp-path: /Users/soanr/Desktop/temp
 #本地ffmpeg路径
-ffmpeg-path: /Users/soanr/Desktop/ffmpeg
+ffmpeg-path: /Users/soanr/ffmpeg
+#阿里云oss地址
+oss:
+  endpoint: oss-cn-zhangjiakou.aliyuncs.com
+  accessKeyId: LTAIy26RIiRm2X3N
+  accessKeySecret: WGP92A89rj6ToRihDUxb6SVJi9lmVc
+  bucketName: cilicili-upload

@@ -1,5 +1,8 @@
 package com.gaoyuanming.upload.service.impl;
 
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClientBuilder;
+import com.aliyun.oss.model.PutObjectRequest;
 import com.gaoyuanming.common.model.support.ResponseResult;
 import com.gaoyuanming.upload.feign.AccountFeign;
 import com.gaoyuanming.upload.model.entity.Follow;
@@ -12,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,20 +39,44 @@ public class VideoServiceImpl implements VideoService {
     @Value("${ffmpeg-path}")
     private String ffmpeg;
 
+    @Value("${oss.endpoint}")
+    private String endpoint;
+
+    @Value("${oss.accessKeyId}")
+    private String accessKeyId;
+
+    @Value("${oss.accessKeySecret}")
+    private String accessKeySecret;
+
+    @Value("${oss.bucketName}")
+    private String bucketName;
+
+    private String putFile(File file) {
+        String name = UUID.randomUUID() + ".mp4";
+        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, name, file);
+        ossClient.putObject(putObjectRequest);
+        ossClient.shutdown();
+        return "https://" + bucketName + "." + endpoint + "/" + name;
+    }
+
     @Override
     public Video save(Video video) throws Exception {
+
+        String mp4Path = temp + "/" + video.getUrl();
 
         //mp3合成mp4
         if (video.isUseMusic()) {
             String id = UUID.randomUUID().toString();
             String mp3Path = temp + "/" + video.getMusicUrl();
-            String mp4Path = temp + "/" + video.getUrl();
             String newPath = temp + "/" + id + ".mp4";
             String command = ffmpeg + " -i " + mp4Path + " -i " + mp3Path
                     + " -c:v copy -shortest -c:a aac -strict experimental -map 0:v:0 -map 1:a:0 " + newPath;
             Process exec = Runtime.getRuntime().exec(command);
             exec.waitFor();
-            video.setUrl(id + ".mp4");
+            video.setUrl(putFile(new File(newPath)));
+        } else {
+            video.setUrl(putFile(new File(mp4Path)));
         }
 
         return videoRepository.save(video);

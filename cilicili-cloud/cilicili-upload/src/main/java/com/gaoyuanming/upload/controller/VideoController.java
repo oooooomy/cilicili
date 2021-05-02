@@ -4,7 +4,6 @@ import com.gaoyuanming.upload.model.entity.Video;
 import com.gaoyuanming.upload.model.entity.VideoLike;
 import com.gaoyuanming.upload.service.VideoLikeService;
 import com.gaoyuanming.upload.service.VideoService;
-import com.gaoyuanming.upload.service.impl.VideoLikeServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

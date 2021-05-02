@@ -28,6 +28,13 @@ public class AccountServiceImpl implements AccountService {
     @Resource
     private AccountRepository accountRepository;
 
+    /**
+     * 用户登录实现
+     *
+     * @param code 微信code
+     * @return 用户信息
+     * @throws IOException 异常
+     */
     @Override
     public Account login(String code) throws IOException {
         OkHttpClient client = new OkHttpClient();
@@ -40,6 +47,7 @@ public class AccountServiceImpl implements AccountService {
         Response response = client.newCall(request).execute();
         if (response.isSuccessful()) {
             LoginDto dto = JSON.parseObject(Objects.requireNonNull(response.body()).byteStream(), LoginDto.class);
+            System.out.println(dto.toString());
             //查询是否有当前用户
             Optional<Account> optional = accountRepository.findById(dto.getOpenId());
             if (optional.isPresent()) {

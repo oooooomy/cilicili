@@ -36,6 +36,11 @@ public class EmailServiceImpl implements EmailService {
         sender.send(m);
     }
 
+    /**
+     * 发送验证码
+     * @param to 收件人邮箱
+     * @throws Exception 异常
+     */
     @Override
     public void sendCode(String to) throws Exception {
         Code code = codeCache.get(to);

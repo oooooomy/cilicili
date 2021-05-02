@@ -12,6 +12,7 @@ Page({
     },
 
     onLoad: function (options) {
+        console.log(options.videoForm)
         this.setData({
             videoFrom: JSON.parse(options.videoForm)
         })

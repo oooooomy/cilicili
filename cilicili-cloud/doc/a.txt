@@ -2,6 +2,7 @@
 2 微信swiper 滑动掉帧
 3 swiper 加上audio context 掉帧
 4.ffmpeg 音视频长度不同
+5.wx.createCameraContext拒绝后将不再弹窗提醒获取权限
 
 
 /Users/soanr/Desktop/ffmpeg -i /Users/soanr/Desktop/test.mp4 -i /Users/soanr/Desktop/IU-Blueming.mp3 -c:v copy -shortest -c:a aac -strict experimental /Users/soanr/Desktop/6d559efd-7551-4ea0-b7dd-5eae84d4af9f.mp4

@@ -39,6 +39,12 @@ spring:
           predicates:
             - Path=/email-service/**
 
+        #直播间服务路由
+        - id: routes-room-service
+          uri: lb://room-service
+          predicates:
+            - Path=/room-service/**
+
       #去除路由前缀
       default-filters:
         - StripPrefix=1

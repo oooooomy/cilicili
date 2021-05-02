@@ -29,7 +29,7 @@ App({
                     success: (res) => {
                         if (res.data.code === 200) {
                             this.globalData.userInfo = res.data.data
-                            console.log('get account success')
+                            console.log('get account success: ', res.data.data)
                         }
                     }
                 })

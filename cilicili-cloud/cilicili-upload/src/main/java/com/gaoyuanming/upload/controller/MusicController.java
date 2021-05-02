@@ -16,6 +16,8 @@ public class MusicController {
 
     @PostMapping("")
     public Music save(@RequestBody Music music) {
+        music.setName(music.getName().replace("&", " "));
+        music.setAuthor(music.getAuthor().replace("&", " "));
         return musicService.save(music);
     }
 

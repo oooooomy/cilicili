@@ -1,36 +1,55 @@
-<van-nav-bar border="{{false}}"
-             custom-style="background: #1b2021;"
-             fixed="{{true}}"
-             placeholder="{{true}}"
-             bind:click-left="onClickLeft">
-    <view slot="left">
-        <van-icon name="arrow-left"/>
-    </view>
-    <view slot="title" class="room-header">white 卢本伟</view>
-</van-nav-bar>
+<image mode="aspectFill" class="background-img" src="../../assets/room.svg"/>
 
-<video autoplay="{{true}}"
-       style="height: {{videoHeight}}px;"
-       show-center-play-btn="{{false}}"
-       enable-progress-gesture="{{false}}"
-       loop="{{true}}"
-       controls="{{true}}"
-       object-fit="contain"
-       src="{{room.url}}"/>
+<view class="room-main">
+    <van-nav-bar border="{{false}}"
+                 custom-style="background: transparent;"
+                 fixed="{{true}}"
+                 placeholder="{{true}}"
+                 bind:click-left="onClickLeft">
+        <view slot="left">
+            <van-icon name="arrow-left"/>
+        </view>
+        <view slot="title" class="room-header">{{room.userNickname}}</view>
+    </van-nav-bar>
 
-<van-tabbar border="{{false}}" id="bottom-bar">
-    <view class="barrage-input">
-        <image class="send-image" src="../../assets/send.svg"/>
-        <input adjust-position="{{false}}"
-               value="{{barrageInputValue}}"
-               bind:input="barrageInput"
-               maxlength="500"
-               placeholder="What do you want to say ?"/>
+    <video id="player"
+           autoplay="{{false}}"
+           style="height: {{videoHeight}}px;"
+           show-center-play-btn="{{false}}"
+           enable-progress-gesture="{{false}}"
+           loop="{{true}}"
+           enable-danmu
+           danmu-btn
+           controls="{{true}}"
+           object-fit="contain"
+           src="{{room.url}}"/>
+
+    <view class="room-des">
+        <image src="{{room.avatar}}" class="room-avatar"/>
+        <view>
+            <view class="room-des-t1">{{room.userNickname}}</view>
+            <view class="room-des-t2">{{room.title}}</view>
+        </view>
     </view>
-    <van-button class="send-btn"
-                color="linear-gradient(to right, #4bb0ff, #6149f6)"
-                bind:click="clickSubmit"
-                round>
-        Submit
-    </van-button>
-</van-tabbar>
+
+    <view class="room-des2">
+        系统提示：cilicili直播内容以及互动评论须严格遵守直播规范，严禁传播违法违规、低俗血暴、宗教政治 吸烟酗酒、造谣诈骗等不良有害信息。如有违规，平台将进行封禁直至永久封停账号哦！请勿轻信平台上各类广告信息，谨防上当受骗。
+    </view>
+
+    <van-tabbar border="{{false}}" id="bottom-bar">
+        <view class="barrage-input">
+            <image class="send-image" src="../../assets/send.svg"/>
+            <input adjust-position="{{false}}"
+                   value="{{barrageInputValue}}"
+                   bind:input="barrageInput"
+                   maxlength="500"
+                   placeholder="What do you want to say ?"/>
+        </view>
+        <van-button class="send-btn"
+                    color="linear-gradient(to right, #4bb0ff, #6149f6)"
+                    bind:click="clickSubmit"
+                    round>
+            Submit
+        </van-button>
+    </van-tabbar>
+</view>

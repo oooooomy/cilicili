@@ -36,7 +36,7 @@
             </view>
         </view>
         <video class="video-item" id="{{ index }}" show-center-play-btn="{{false}}" enable-progress-gesture="{{false}}"
-               object-fit="cover" src="{{base + '/upload-service/file/mp4/' +item.url}}" controls="{{false}}"
+               object-fit="cover" src="{{item.url}}" controls="{{false}}"
                loop="{{true}}"/>
     </swiper-item>
 </swiper>

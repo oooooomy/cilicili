@@ -12,7 +12,7 @@ Component({
                 url: 'https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/dy1%20%281%29.jpeg'
             },
             {
-                id: '',
+                id: '2',
                 title: '国服第一刀妹上线 冲大师',
                 name: '即将拥有人鱼线的PDD',
                 url: 'https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/dy1%20%282%29.jpeg'
@@ -22,24 +22,6 @@ Component({
                 title: 'SKT职业选手faker',
                 name: 'STK T1 faker',
                 url: 'https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/dy1%20%283%29.jpeg'
-            },
-            {
-                id: '4',
-                title: '家人们阿很好的撒娇回家',
-                name: '吐字笑笑',
-                url: 'https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/dy1%20%285%29.jpeg'
-            },
-            {
-                id: '5',
-                title: '家人们阿很好的撒娇回家',
-                name: 'LPL官方赛事',
-                url: 'https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/dy1.jpeg'
-            },
-            {
-                id: '6',
-                title: '与质询双排中',
-                name: '呆妹',
-                url: 'https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/dy1%20%284%29.jpeg'
             },
         ]
     },
@@ -55,9 +37,11 @@ Component({
     },
 
     methods: {
+
         clickRoom(e) {
+            const roomId = e.currentTarget.dataset.roomid
             wx.navigateTo({
-                url: '/pages/room/room'
+                url: '/pages/room/room?id=' + roomId
             })
         },
 

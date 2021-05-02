@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 邮箱验证码
+ */
 @Component
 public class CodeCache {
 

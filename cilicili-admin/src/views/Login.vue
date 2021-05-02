@@ -2,10 +2,10 @@
   <div class="login-box">
     <div>
       <div class="box-header">
-        <img class="logo" src="../assets/logo.svg" alt=""/>
-        <div class="box-header-t">Management</div>
+        <img class="logo" src="../assets/logo.png" alt=""/>
+        <div class="box-header-t">cilicili Admin</div>
       </div>
-      <div class="title">Logistics Management 物流管理系统 - 管理员登录</div>
+      <div class="title">cilicili Management 短视频媒体直播平台 - 管理员</div>
       <a-tabs @change="tabClick" default-active-key="1" :tabBarStyle="{ textAlign: 'center' }">
         <a-tab-pane key="1" tab="密码登陆">
           <a-input
@@ -56,7 +56,7 @@
       <a-button :loading="submitLoading" class="submit-btn" type="primary" @click="submitLogin">
         确认登陆
       </a-button>
-      <div class="des">物流管理系统 - Copyright 2021 高元明</div>
+      <div class="des">cilicili - Copyright 2021 高元明</div>
     </div>
   </div>
 </template>
