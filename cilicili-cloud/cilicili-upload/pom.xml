@@ -26,7 +26,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <!--服务发现-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

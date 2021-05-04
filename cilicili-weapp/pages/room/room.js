@@ -1,4 +1,4 @@
-const app = getApp()
+const App = getApp()
 
 Page({
 
@@ -7,6 +7,7 @@ Page({
      */
     data: {
         roomId: '',
+        base: App.globalData.baseUrl,
         navBarTop: 90,
         active: 1,
         videoHeight: 0,
@@ -34,6 +35,17 @@ Page({
         this.videoContext = wx.createVideoContext('player')
         this.videoContext.play()
         console.log("open room id: ", this.data.roomId)
+        this.onConnWebsocketServer()
+    },
+
+    onConnWebsocketServer(){
+        console.log('连接websocket服务器')
+        wx.connectSocket({
+          url: 'ws://localhost:9003/chat/123/' + App.globalData.userInfo.id,
+          success: (res)=>{
+              console.log('connectSocket : ', res)
+          }
+        })
     },
 
     onClickLeft() {
