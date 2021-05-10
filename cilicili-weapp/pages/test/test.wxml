@@ -1,0 +1,6 @@
+<video show-center-play-btn="{{false}}"
+ enable-progress-gesture="{{false}}"
+               object-fit="cover" 
+               autoplay="{{true}}"
+               src="http://cilicili-upload.oss-cn-zhangjiakou.aliyuncs.com/00de0a65-c0ad-49d7-acae-f710bcec1e52.mp4" controls="{{false}}"
+               loop="{{true}}" />

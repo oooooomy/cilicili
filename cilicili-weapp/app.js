@@ -15,7 +15,7 @@ App({
         BottomTabBarHeight: 0,
         windowHeight: 0,
         windowWidth: 0,
-        baseUrl: 'http://172.20.10.5:8762',
+        baseUrl: 'http://localhost:8762',
     },
 
     onLaunch() {
@@ -24,7 +24,7 @@ App({
             success: (res) => {
                 console.log("wx login success")
                 wx.request({
-                    url: this.globalData.baseUrl + '/account-service/login?code=' + res.code,
+                    url: this.globalData.baseUrl + '/account-service/user/login?code=' + res.code,
                     method: "POST",
                     success: (res) => {
                         if (res.data.code === 200) {

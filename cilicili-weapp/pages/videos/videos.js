@@ -36,4 +36,8 @@ Page({
         })
     },
 
+    clickSubmit(){
+        
+    },
+
 });

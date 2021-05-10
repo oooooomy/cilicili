@@ -1,0 +1,69 @@
+.avatar{
+  width: 22vw;
+  height: 22vw;
+  border-radius: 50%;
+  margin: 50rpx 39vw 30rpx 39vw;
+}
+
+textarea{
+  width: 90vw;
+  color: rgba(0, 0, 0, .5);
+  font-size: 25rpx;
+  letter-spacing: 1px;
+  margin: 5vw;
+  height: 60rpx;
+  margin-top: 30rpx;
+  padding-top: 30rpx;
+}
+
+.post-divider{
+  width: 90vw;
+  margin: 2vw 5vw;
+  height: 1px;
+  background: rgba(0, 0, 0, .1);
+}
+
+.propu-title{
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, .7);
+  padding-left: 5vw;
+  margin: 20rpx 0;
+}
+
+.liv{
+  width: 100vw;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #07c160;
+  margin-bottom: 50rpx;
+}
+
+.title{
+  color: #ffffff;
+  font-size: 28rpx;
+  letter-spacing: 1px;
+}
+
+.submit-btn{
+  color: #ffffff;
+  background: #fb3640;
+  width: 92vw;
+  height: 90rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  line-height: 90rpx;
+  letter-spacing: 5rpx;
+  margin: 50rpx 4vw;
+}
+
+.van-cell {
+  background: transparent !important;
+  color: #ffffff;
+}
+
+.van-cell__title {
+  color: #ffffff !important;
+}
+

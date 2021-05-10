@@ -1,5 +1,5 @@
 import request from "axios"
-import {message} from 'ant-design-vue'
+import { message } from 'ant-design-vue'
 
 export const BASE_GATEWAY_URL = "http://localhost:8762"
 
@@ -17,7 +17,7 @@ service.interceptors.response.use(
         const res = response.data;
 
         //判断response状态
-        if (!res.status) message.error('Error: ' + res.msg)
+        if (res.code !== 200) message.error(res.msg)
 
         return res
     },

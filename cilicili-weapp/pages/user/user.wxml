@@ -30,8 +30,11 @@
     </view>
     <view class="user-des-follow">
         <van-row gutter="10">
-            <van-col span="14">
-                <view bind:tap="onClickFollow" class="user-des-follow-btn">Follow</view>
+            <van-col wx:if="{{!isFollow}}" span="14">
+                <view bind:tap="onClickFollow" class="user-des-follow-btn">关注</view>
+            </van-col>
+            <van-col wx:if="{{isFollow}}" span="14">
+                <view bind:tap="onClickDeleteFollow" class="user-des-follow-btn">取消关注</view>
             </van-col>
             <van-col span="5">
                 <van-button icon="smile-comment-o" type="default"/>
@@ -56,7 +59,7 @@
                 <van-col span="8" wx:for="{{uploadList}}" wx:key="index">
                     <view class="user-like-item">
                         <image mode="aspectFill" class="user-like-item-img"
-                               src="{{base+'/upload-service/file/image/'+item.poster}}"/>
+                               src="{{base+'/upload-service/file/'+item.poster}}"/>
                     </view>
                 </van-col>
             </van-row>
@@ -70,7 +73,7 @@
                 <van-col span="8" wx:for="{{likeList}}" wx:key="index">
                     <view class="user-like-item">
                         <image mode="aspectFill" class="user-like-item-img"
-                               src="{{base+'/upload-service/file/image/'+item.poster}}"/>
+                               src="{{base+'/upload-service/file/'+item.poster}}"/>
                     </view>
                 </van-col>
             </van-row>

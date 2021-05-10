@@ -28,7 +28,7 @@
                 <view class="user-des-follow-btn" bind:tap="onClickUpload">发个作品</view>
             </van-col>
             <van-col span="5">
-                <van-button type="default" icon="info-o"/>
+                <van-button bind:click="onClickStartLive" type="default" icon="live"/>
             </van-col>
         </van-row>
     </view>
@@ -45,7 +45,7 @@
                 <van-col span="8" wx:for="{{uploadList}}" wx:key="index">
                     <view class="user-like-item">
                         <image mode="aspectFill" class="user-like-item-img"
-                               src="{{base+'/upload-service/file/image/'+item.poster}}"/>
+                               src="{{base+'/upload-service/file/'+item.poster}}"/>
                     </view>
                 </van-col>
             </van-row>
@@ -59,7 +59,7 @@
                 <van-col span="8" wx:for="{{likeList}}" wx:key="index">
                     <view class="user-like-item">
                         <image mode="aspectFill" class="user-like-item-img"
-                               src="{{base+'/upload-service/file/image/'+item.poster}}"/>
+                               src="{{base+'/upload-service/file/'+item.poster}}"/>
                     </view>
                 </van-col>
             </van-row>

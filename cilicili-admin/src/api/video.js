@@ -9,7 +9,7 @@ export function FindVideoByStatus(status) {
 
 export function SetVideoStatus(id, status) {
     return request({
-        url: '/upload-service/video/'+id + '/setStatus/?status=' + status,
+        url: '/upload-service/video/' + id + '/setStatus?status=' + status,
         method: 'put'
     })
 }

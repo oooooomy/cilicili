@@ -168,7 +168,7 @@ Page({
             timeout: 1000 * 60 * 60 * 10,
             filePath: this.data.tempThumbPath,
             name: 'file',
-            url: App.globalData.baseUrl + '/upload-service/file/jpg',
+            url: App.globalData.baseUrl + '/upload-service/file',
             success: (res) => {
                 const parse = JSON.parse(res.data);
                 videoForm.poster = parse.data
@@ -178,7 +178,7 @@ Page({
             timeout: 1000 * 60 * 60 * 10,
             filePath: this.data.videoSrc,
             name: 'file',
-            url: App.globalData.baseUrl + '/upload-service/file/mp4',
+            url: App.globalData.baseUrl + '/upload-service/file',
             success: (res) => {
                 const data = JSON.parse(res.data)
                 if (data.code === 200) {

@@ -1,13 +1,13 @@
 <template>
   <div class="system">
-    <iframe src="http://localhost:8848/nacos/index.html"/>
+    <iframe src="http://localhost:8761" />
   </div>
 </template>
 
 <script>
 export default {
   name: "Index",
-}
+};
 </script>
 
 <style scoped>

@@ -18,7 +18,7 @@
           name="file"
           @change="uploadMusicChange"
           :multiple="true"
-          :action="BASE_URL + '/file/mp3'"
+          :action="BASE_URL + '/file'"
           list-type="picture"
         >
           <a-button>
@@ -35,7 +35,7 @@
             accept="image/jpeg"
             :multiple="true"
             name="file"
-            :action="BASE_URL + '/file/jpg'"
+            :action="BASE_URL + '/file'"
           >
             <p class="ant-upload-drag-icon">
               <a-icon type="inbox" />
@@ -98,7 +98,7 @@ export default {
         this.musicForm.url
       ) {
         SaveMusic(this.musicForm).then((res) => {
-          if (res.status) {
+          if (res.code === 200) {
             this.$message.success("音乐保存成功");
             this.musicForm = {};
             this.$router.push("/music");
@@ -115,7 +115,7 @@ export default {
       if (e.file.response) {
         const res = e.file.response;
         console.log("uploadMusicChange ", res);
-        if (res.status) {
+        if (res.code === 200) {
           this.musicForm.url = res.data;
           this.$message.success("MP3上传成功");
         } else {
@@ -128,7 +128,7 @@ export default {
       if (e.file.response) {
         const res = e.file.response;
         console.log("uploadPosterChange ", res);
-        if (res.status) {
+        if (res.code === 200) {
           this.musicForm.poster = res.data;
           this.$message.success("封面海报上传成功");
         } else {

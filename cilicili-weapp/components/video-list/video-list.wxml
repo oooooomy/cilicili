@@ -22,7 +22,7 @@
             </view>
             <view class="swiper-avatar-v">
                 <image class="swiper-avatar2"
-                       src="{{item.useMusic ? base + '/upload-service/file/image/'+item.musicPoster : item.userAvatar}}"/>
+                       src="{{item.useMusic ? base + '/upload-service/file/'+item.musicPoster : item.userAvatar}}"/>
             </view>
         </view>
         <view class="swiper-music">
@@ -36,7 +36,7 @@
             </view>
         </view>
         <video class="video-item" id="{{ index }}" show-center-play-btn="{{false}}" enable-progress-gesture="{{false}}"
-               object-fit="cover" src="{{item.url}}" controls="{{false}}"
+               object-fit="cover" src="{{base + '/upload-service/file/' + item.url}}" controls="{{false}}"
                loop="{{true}}"/>
     </swiper-item>
 </swiper>

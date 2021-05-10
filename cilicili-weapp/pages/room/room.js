@@ -40,10 +40,18 @@ Page({
 
     onConnWebsocketServer(){
         console.log('连接websocket服务器')
+        console.log(this.data.base + '/room-service/ws/conn?roomId=' + this.data.roomId + '&userId=' + App.globalData.userInfo.id)
         wx.connectSocket({
-          url: 'ws://localhost:9003/chat/123/' + App.globalData.userInfo.id,
+          url: 'http://localhost:9881/ws/conn?roomId=' + this.data.roomId + '&userId=' + App.globalData.userInfo.id,
+          header:{
+            'content-type': 'application/json'
+          },
+          protocols: ['protocol1'],
           success: (res)=>{
-              console.log('connectSocket : ', res)
+              console.log('connectSocket success : ', res)
+          },
+          fail: (err)=>{
+            console.log('connectSocket error : ', err)
           }
         })
     },

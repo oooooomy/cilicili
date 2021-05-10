@@ -25,10 +25,10 @@ Page({
             url: App.globalData.baseUrl + '/upload-service/video/findByStatus?status=true',
             method: 'GET',
             success: (res)=>{
-                console.log(res.data)
                 this.setData({
                     videoList: res.data.data
                 })
+                console.log('首页视频列表: ' , this.data.videoList)
             },
         })
         setTimeout(() => {

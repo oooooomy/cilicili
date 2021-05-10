@@ -8,7 +8,9 @@
     "pages/live/live",
     "pages/user/user",
     "pages/post/post",
-    "pages/videos/videos"
+    "pages/videos/videos",
+    "pages/music/music",
+    "pages/start-live/start-live"
   ],
   "window": {
     "onReachBottomDistance": 0,

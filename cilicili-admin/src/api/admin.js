@@ -10,14 +10,14 @@ export function AdminLogin(data) {
 
 export function AdminLoginByCode(email, code) {
     return request({
-        url: '/account-service/admin/loginByEmail?email=' + email + '&code=' + code,
+        url: '/account-service/admin/loginByEmail?email=' + email + '&value=' + code,
         method: 'get'
     })
 }
 
 export function GetEmailCode(email) {
     return request({
-        url: '/email-service/code?sendTo=' + email,
+        url: '/email-service/code?email=' + email,
         method: 'get'
     })
 }

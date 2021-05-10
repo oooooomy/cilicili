@@ -27,15 +27,21 @@ Component({
 
     methods: {
 
+        onClickStartLive(){
+            wx.navigateTo({
+              url: '/pages/start-live/start-live',
+            })
+        },
+
         getMyVideos() {
             wx.request({
                 url: this.data.base + "/upload-service/video/findUserLikeAndUpload/" + App.globalData.userInfo.id,
                 method: 'GET',
                 success: (res) => {
-                    if (res.data.status) {
+                    if (res.data.code === 200) {
                         this.setData({
-                            uploadList: res.data.data.uploadList,
-                            likeList: res.data.data.likeList,
+                            uploadList: res.data.data.uploadList ? res.data.data.uploadList : '',
+                            likeList: res.data.data.likeList ? res.data.data.likeList : '',
                         })
                     }
                 }
@@ -56,7 +62,7 @@ Component({
                         user.gender = info.gender === 0 ? '女' : '男'
                         console.log(user)
                         wx.request({
-                            url: App.globalData.baseUrl + '/account-service/update',
+                            url: App.globalData.baseUrl + '/account-service/user/update',
                             method: "PUT",
                             data: user,
                             success: (res) => {

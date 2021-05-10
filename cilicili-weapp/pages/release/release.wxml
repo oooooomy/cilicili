@@ -97,7 +97,7 @@
                mode="aspectFill"
                src="https://gaoyuanming-photo.oss-cn-beijing.aliyuncs.com/cilicili/music.jpg"/>
         <view class="music-item" wx:for="{{musicList}}" wx:key="index">
-            <image class="music-img" src="{{base+'/upload-service/file/image/'+ item.poster}}"/>
+            <image class="music-img" src="{{base+'/upload-service/file/'+ item.poster}}"/>
             <view class="music-title">{{item.name}}</view>
             <view class="music-name">{{item.author}}</view>
             <view class="music-btn" data-music="{{item}}" bindtap="selectMusic">使用</view>

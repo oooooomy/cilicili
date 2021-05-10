@@ -15,6 +15,7 @@ Component({
      */
     data: {
         videoList: [],
+        current: 0,
         showShare: false,
         options: [
             {name: '微信', icon: 'wechat', openType: 'share'},
@@ -27,7 +28,7 @@ Component({
         selectCommentVideoId: '',
         base: App.globalData.baseUrl,
         barrageInputValue: '',
-        isStop: false,
+        isReady: false,
         showComment: false,
     },
 
@@ -64,12 +65,9 @@ Component({
                 this.videoContext.pause()
                 this.videoContext = wx.createVideoContext(e.detail.current.toString(), this)
                 this.videoContext.play()
-                for(let i =1;i<99;i++){
-                    setTimeout(()=>{
-                        this.videoContext = wx.createVideoContext(e.detail.current.toString(), this)
-                    },20)
-                }
-                this.setData({isStop: false})
+                this.setData({
+                    current: e.detail.current
+                })
             }
         },
 
@@ -91,7 +89,11 @@ Component({
                 method: 'POST',
                 data: form,
                 success: (res) => {
-                    if (res.data.status) {
+                    if (res.data.code === 200) {
+                        let count = "videoList[" + this.data.current + "].likeCount"
+                        this.setData({
+                            [count]: this.data.videoList[this.data.current].likeCount+1
+                        })
                         wx.showToast({
                             title: 'Thank you',
                             icon: 'success',
@@ -117,7 +119,7 @@ Component({
                 url: this.data.base + '/upload-service/comment/video/' + this.data.selectCommentVideoId,
                 method: 'GET',
                 success: (res) => {
-                    if (res.data.status) {
+                    if (res.data.code === 200) {
                         this.setData({
                             commentList: res.data.data
                         })
@@ -161,9 +163,11 @@ Component({
                 method: 'POST',
                 data: form,
                 success: (res) => {
-                    if (res.data.status) {
+                    if (res.data.code === 200) {
+                        let count = "videoList[" + this.data.current + "].commentCount"
                         this.setData({
-                            barrageInputValue: ''
+                            barrageInputValue: '',
+                            [count]: this.data.videoList[this.data.current].commentCount+1
                         })
                         wx.showToast({
                             title: "发送成功",
