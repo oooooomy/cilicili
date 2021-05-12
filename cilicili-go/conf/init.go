@@ -1,12 +1,12 @@
 package conf
 
 import (
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
+
+	"gopkg.in/yaml.v2"
 )
 
 type Configuration struct {
-	OSS    OssConfiguration
 	DB     Database
 	Eureka Eureka
 	App    App
@@ -27,13 +27,6 @@ type Eureka struct {
 type App struct {
 	AppId     string `yaml:"appId"`
 	AppSecret string `yaml:"appSecret"`
-}
-
-type OssConfiguration struct {
-	Endpoint        string `yaml:"endpoint"`
-	AccessKeyId     string `yaml:"accessKeyId"`
-	AccessKeySecret string `yaml:"accessKeySecret"`
-	BucketName      string `yaml:"bucketName"`
 }
 
 type Mail struct {

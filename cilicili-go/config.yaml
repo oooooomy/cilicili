@@ -1,9 +1,3 @@
-#阿里云OSS对象存储
-oss:
-  endpoint: oss-cn-zhangjiakou.aliyuncs.com
-  accessKeyId: LTAIy26RIiRm2X3N
-  accessKeySecret: WGP92A89rj6ToRihDUxb6SVJi9lmVc
-  bucketName: cilicili-video
 #微信小程序配置
 app:
   appId: wx18783a513dd8b26f
