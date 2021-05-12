@@ -15,7 +15,7 @@ App({
         BottomTabBarHeight: 0,
         windowHeight: 0,
         windowWidth: 0,
-        baseUrl: 'http://localhost:8762',
+        baseUrl: 'http://172.20.10.5:8762',
     },
 
     onLaunch() {

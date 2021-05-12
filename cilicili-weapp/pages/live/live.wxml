@@ -27,9 +27,9 @@
     <van-row gutter="8">
         <van-col span="12" wx:for="{{roomList}}" wx:key="index">
             <view class="room-card" data-roomId="{{item.id}}" bind:tap="clickRoom" data-id="{{item.id}}">
-                <image mode="aspectFill" class="room-card-image" src="{{item.url}}"></image>
+                <image mode="aspectFill" class="room-card-image" src="{{base + '/upload-service/file/'+ item.posterUrl}}"></image>
                 <view class="room-card-t">{{item.title}}</view>
-                <view class="room-card-d">{{item.name}}</view>
+                <view class="room-card-d">{{item.username}}</view>
             </view>
         </van-col>
     </van-row>

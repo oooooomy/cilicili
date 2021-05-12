@@ -13,6 +13,10 @@ Page({
     userInfo: {},
     showTitle: false,
     room: {
+      id: '',
+      username: '',
+      avatar: '',
+      isLiving: false,
       title: '',
       email: '',
       posterUrl: '',
@@ -25,7 +29,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      userInfo: App.globalData.userInfo
+      userInfo: App.globalData.userInfo,
     })
     this.loadMyLiveForm()
   },
@@ -40,7 +44,78 @@ Page({
           this.setData({
             room: r.data
           })
+        }else{
+          wx.showToast({
+            title: r.msg,
+          })
+          const room = {
+            id: App.globalData.userInfo.id,
+            username: App.globalData.userInfo.nickname,
+            avatar: App.globalData.userInfo.avatarUrl,
+          }
+          this.setData({
+            room: room
+          })
+          wx.request({
+            url: App.globalData.baseUrl + '/room-service/create',
+            method: 'POST',
+            data: room,
+            success: (res) => {
+              wx.showToast({ title: '初始化直播间' })
+            }
+          })
         }
+      }
+    })
+  },
+
+  //上播
+  changeLivingUp() {
+    let _this = this
+    let upUrl = _this.data.base + '/room-service/up/' + this.data.room.id
+    wx.showModal({
+      title: '提示',
+      content: '我已阅读用户直播协议，审核结果将以邮件形式发送给你',
+      success(res) {
+        if (res.confirm) {
+          let room = _this.data.room
+          room.isLiving = true
+          wx.request({
+            url: upUrl,
+            method: 'GET',
+            success: (res)=>{
+              WSH.showToast({
+                title: "开播成功"
+              })
+            }
+          })
+          _this.setData({
+            room: room
+          })
+          _this.saveRoomEdit()
+        }
+      }
+    })
+  },
+
+  //下播
+  changeLivingDown() {
+    let room = this.data.room
+    room.isLiving = false
+    this.setData({
+      room: room
+    })
+    this.saveRoomEdit()
+  },
+
+  saveRoomEdit() {
+    console.log(this.data.room)
+    wx.request({
+      url: App.globalData.baseUrl + '/room-service/create',
+      method: 'POST',
+      data: this.data.room,
+      success: (res) => {
+        wx.showToast({ title: '保存成功' })
       }
     })
   },
@@ -59,7 +134,7 @@ Page({
       room.email = e.detail.value.Email
       this.setData({ room: room })
     }
-    console.log(this.data.room)
+    this.saveRoomEdit()
     this.onClose()
   },
 
@@ -129,10 +204,20 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths
-        _this.setData({
-          posterUrl: tempFilePaths
+        let room = _this.data.room
+        wx.uploadFile({
+          timeout: 1000 * 60 * 60 * 10,
+          filePath: res.tempFilePaths[0],
+          name: 'file',
+          url: App.globalData.baseUrl + '/upload-service/file',
+          success: (res2) => {
+            const r = JSON.parse(res2.data)
+            console.log(r)
+            if (r.code === 200) {
+              room.posterUrl = r.data
+              _this.saveRoomEdit()
+            }
+          },
         })
       }
     })
@@ -148,15 +233,6 @@ Page({
       showTitle: true,
       type: type
     })
-  },
-
-  onChangeSwitch({ detail }) {
-    //震动反馈
-    wx.vibrateShort({
-      type: 'heavy'
-    })
-    // 需要手动对 checked 状态进行更新
-    this.setData({ checked: detail });
   },
 
 })

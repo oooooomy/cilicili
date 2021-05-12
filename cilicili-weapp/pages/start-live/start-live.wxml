@@ -32,11 +32,12 @@
 <van-cell bind:tap="openChoseImage" border="{{false}}" title="封面海报" is-link value="选择图片" />
 <van-cell data-type="Title" bind:tap="openPopup" border="{{false}}" title="直播间标题" is-link value="{{room.title}}" />
 <van-cell data-type="Email" bind:tap="openPopup" border="{{false}}" title="联系邮箱" is-link value="{{room.email}}" />
-<van-cell border="{{false}}" title="开始直播">
-    <van-switch bind:change="onChangeSwitch" slot="right-icon" checked="{{ checked }}" size="45rpx" active-color="#fb3640" />
+<van-cell border="{{false}}" title="正在直播">
+    <van-switch slot="right-icon" checked="{{ room.isLiving }}" size="45rpx" active-color="#fb3640" />
 </van-cell>
 <van-cell border="{{false}}" center title="推流密匙" value="{{room.token}}" label="(请妥善保存)" />
-<button class="submit-btn" form-type="submit">确认保存</button>
+<button bind:tap="changeLivingUp" wx:if="{{!room.isLiving}}" class="submit-btn">开播</button>
+<button bind:tap="changeLivingDown" wx:if="{{room.isLiving}}" class="submit-btn">下播</button>
 <van-popup custom-style="background: #1b2021!important;" show="{{ showTitle }}" position="bottom" custom-style="height: 30%;" bind:close="onClose">
     <form bindsubmit="onSubmit">
         <textarea adjust-position="{{false}}" value="{{value}}" name="{{type}}" maxlength="50" placeholder="{{ type === 'Title' ? '请输入你的直播间标题' : '请输入你的联系邮箱' }}" />

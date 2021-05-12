@@ -40,14 +40,14 @@
     >
       <img
         class="poster"
-        :src="base + '/upload-service/image/' + openVideo.poster"
+        :src="base + '/upload-service/file/' + openVideo.poster"
         alt=""
       />
     </a-modal>
     <a-modal v-model="videoVisible" title="视频预览" @ok="videoVisible = false">
       <video width="300" height="240" controls>
         <source
-          :src="base + '/upload-service/mp4/' + openVideo.url"
+          :src="base + '/upload-service/file/' + openVideo.url"
           type="video/mp4"
         />
       </video>

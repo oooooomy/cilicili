@@ -28,7 +28,7 @@
 
 .music-title {
     font-size: 30rpx;
-    line-height: 80rpx;
+    line-height: 45rpx;
     letter-spacing: 1px;
     font-weight: bolder;
     width: 72vw;
@@ -38,6 +38,7 @@
     width: 72vw;
     letter-spacing: 1px;
     font-size: 25rpx;
+    padding-top: 10rpx;
 }
 
 .music-btn {

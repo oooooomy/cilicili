@@ -9,7 +9,7 @@
         <view slot="left">
             <van-icon name="arrow-left"/>
         </view>
-        <view slot="title" class="room-header">{{room.userNickname}}</view>
+        <view slot="title" class="room-header">{{room.username}}</view>
     </van-nav-bar>
 
     <video id="player"
@@ -27,7 +27,7 @@
     <view class="room-des">
         <image src="{{room.avatar}}" class="room-avatar"/>
         <view>
-            <view class="room-des-t1">{{room.userNickname}}</view>
+            <view class="room-des-t1">{{room.username}}</view>
             <view class="room-des-t2">{{room.title}}</view>
         </view>
     </view>
